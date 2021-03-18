@@ -1,0 +1,23 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /demo
+
+spring:
+  application:
+    name: cloud-grpc-client-consul
+  cloud:
+    consul:
+      port: 8500
+      hostname: 127.0.0.1
+      discovery:
+        registry: false
+        health-check-path: /demo/actuator/info
+        health-check-interval: 15s
+
+grpc:
+  client:
+    cloud-grpc-server-consul:
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext

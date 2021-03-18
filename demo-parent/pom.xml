@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kevin</groupId>
+        <artifactId>demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>demo-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>demo parent</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.version>1.8</java.version>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+
+        <!--==========spring boot启动依赖==========-->
+        <version.springboot.start>2.3.3.RELEASE</version.springboot.start>
+        <version.springcloud.start>Hoxton.SR7</version.springcloud.start>
+
+        <!--==========spring cloud启动依赖==========-->
+
+        <!--==========demo内部包==========-->
+        <version.demo-interface>1.0.0-SNAPSHOT</version.demo-interface>
+
+        <!--==========geekplus内部包==========-->
+        <version.optimus.common>1.0.10-RELEASE</version.optimus.common>
+        <version.optimus.tool.loghelper>1.0.1-RELEASE</version.optimus.tool.loghelper>
+        <version.optimus.data.datasource>1.0.0-RELEASE</version.optimus.data.datasource>
+
+        <!--==========第三方插件==========-->
+        <version.mysql>5.1.45</version.mysql>
+        <version.druid.starter>1.1.10</version.druid.starter>
+
+        <version.grpc.start>2.9.0.RELEASE</version.grpc.start>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--==========spring boot启动依赖==========-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${version.springboot.start}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--==========spring cloud启动依赖==========-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${version.springcloud.start}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--==========demo内部包==========-->
+            <dependency>
+                <groupId>com.kevin</groupId>
+                <artifactId>demo-interface</artifactId>
+                <version>${version.demo-interface}</version>
+            </dependency>
+
+            <!--==========geekplus内部包==========-->
+            <dependency>
+                <groupId>com.geekplus</groupId>
+                <artifactId>optimus-common-util</artifactId>
+                <version>${version.optimus.common}</version>
+            </dependency>
+            <!-- optimus 日志组件 -->
+            <dependency>
+                <groupId>com.geekplus</groupId>
+                <artifactId>optimus-tool-loghelper-core</artifactId>
+                <version>${version.optimus.tool.loghelper}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.geekplus</groupId>
+                <artifactId>optimus-data-datasource</artifactId>
+                <version>${version.optimus.data.datasource}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geekplus</groupId>
+                <artifactId>optimus-tool-loghelper-druid</artifactId>
+                <version>${version.optimus.tool.loghelper}</version>
+            </dependency>
+
+            <!--==========第三方插件==========-->
+            <!--mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${version.mysql}</version>
+            </dependency>
+
+            <!--druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${version.druid.starter}</version>
+            </dependency>
+
+            <!--grpc-->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${version.grpc.start}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${version.grpc.start}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-client-spring-boot-starter</artifactId>
+                <version>${version.grpc.start}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
